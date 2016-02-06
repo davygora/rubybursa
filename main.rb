@@ -1,9 +1,7 @@
 #Получаем данные с консоли.
-#ARGV.each do |var|
-#  puts var
-#end
 x_point, y_point, x, y = ARGV
 
+#Проверка координат
 if x_point == x && y_point == y
 	puts 'Точка найдена!'
 elsif x_point == x && y_point != y
