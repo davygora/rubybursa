@@ -20,4 +20,4 @@ end
 
 #dev = Developer.new('Vasya')
 #dev.add_task('Programming')
-#puts dev.tasks
+puts dev.tasks
