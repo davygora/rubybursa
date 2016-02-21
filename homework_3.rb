@@ -10,7 +10,7 @@ class Developer
   def add_task(task_name)
     @task_list.push(task_name)
     begin
-      if @task_list.count >= MAX_TASKS
+      if @task_list.count > MAX_TASKS
         raise ArgumentError
       end
       puts %Q{#{@dev_name}: добавлена задача "#{task_name}".Всего в списке задач: #{@task_list.count}}
@@ -36,30 +36,21 @@ class Developer
   end
 
   def status
-    if can_work? == false
+    if @task_list.empty?
       'свободен'
+      elsif @task_list.count > 0 && @task_list.count < 10
+      'работаю'
+      else
+        'занят'
     end
-
   end
 
   def can_add_task?
     @task_list.count < MAX_TASKS
   end
 
-
   def can_work?
     @task_list.count > 0
   end
 
-
 end
-
-dev = Developer.new('Vasya')
-dev.add_task('Programming')
-
-p dev.can_add_task?
-p dev.can_work?
-p dev.status
-dev.add_task('Programming')
-puts dev.tasks
-dev.work!
