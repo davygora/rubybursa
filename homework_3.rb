@@ -2,7 +2,7 @@ require 'pp'
 class Developer
 
   MAX_TASKS = 10
-
+  attr_reader :task_list, :name
   def initialize dev_name
     @dev_name  = dev_name
     @task_list = []
@@ -87,7 +87,7 @@ end
 
 class Team
 
-  attr_reader :seniors, :juniors, :developers, :team_array
+  attr_reader :seniors, :juniors, :developers
 
   def initialize(&block)
     @team_array = []
@@ -122,7 +122,7 @@ class Team
   end
 
   def add_task(task)
-
+    # :( не отрабатывает on_task
   end
 
   def all
@@ -142,4 +142,22 @@ team = Team.new do
   have_juniors "Владислава", "Аркадий", "Рамеш"
 
   priority :juniors, :developers, :seniors
+
+on_task (:junior) do |dev, task|
+  puts "Отдали задачу #{task} разработчику #{dev.name}, следите за ним!"
 end
+
+on_task (:developer) do |dev, task|
+  puts "Девелопер #{dev.name} крутит носом, но задачу #{task} сделает!"
+end
+
+on_task (:senior) do |dev, task|  
+  puts "#{dev.name} сделает #{task}, но просит больше с такими глупостями не приставать!"
+end
+end
+
+pp team.all
+puts team.seniors
+puts team.juniors
+puts team.developers
+team.report
