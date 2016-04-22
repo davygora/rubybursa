@@ -12,6 +12,7 @@ class Developer
     @dev_name  = dev_name
     @task_list = []
   end
+#fghghjkjhljh
 
   def add_task(task_name)
     can_add_task? or raise 'Too much tasks!'
