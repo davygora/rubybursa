@@ -1,6 +1,12 @@
 class Developer
 
   MAX_TASKS = 10
+  MESSAGES = {
+    add_task: '%s: add task "%s". Count of tasks in list: %i',
+    work: '%s: task is done "%s". Left to do tasks: %i'
+  }
+
+  attr_reader :dev_name
 
   def initialize(dev_name)
     @dev_name  = dev_name
