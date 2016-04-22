@@ -1,8 +1,10 @@
 require 'pp'
 class Developer
 
-  MAX_TASKS = 10
   attr_reader :task_list, :name
+
+  MAX_TASKS = 10
+
   def initialize dev_name
     @dev_name  = dev_name
     @task_list = []
