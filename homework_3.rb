@@ -14,11 +14,10 @@ class Developer
   end
 
   def add_task(task_name)
-    @task_list.push(task_name)
-    if @task_list.count > self.class::MAX_TASKS
-      raise 'Слишком много работы!'
-    end
-    puts %Q{#{@dev_name}: добавлена задача "#{task_name}".Всего в списке задач: #{@task_list.count}}
+    can_add_task? or raise 'Too much tasks!'
+
+    @task_list << task_name
+    puts messages[:add_task] % [dev_name, task_name, task_list.count]
   end
 
   def tasks
