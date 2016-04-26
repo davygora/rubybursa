@@ -15,20 +15,12 @@ class Developer
     @dev_name  = dev_name
     @task_list = []
   end
-#fghghjkjhljh
 
-<<<<<<< HEAD
-  def add_task task_name
-    raise 'Слишком много работы!' if @task_list.count > self.class::MAX_TASKS
-    @task_list.push task_name
-    puts %Q{#{@dev_name}: добавлена задача "#{task_name}".Всего в списке задач: #{@task_list.count}}
-=======
   def add_task(task_name)
     can_add_task? or raise 'Too much tasks!'
 
     @task_list << task_name
     puts messages[:add_task] % [dev_name, task_name, task_list.count]
->>>>>>> refactor
   end
 
   def tasks
