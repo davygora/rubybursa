@@ -1,5 +1,5 @@
 require_relative 'homework_3'
-
+require 'pp'
 class Developer
   
   GROUP = :developers
@@ -9,10 +9,10 @@ class Developer
   end
 
   def kind
-    group.to_s.sub(/s$/, '').to_sum
+    group.to_s.sub(/s$/, '').to_sym
   end
 
-  attr_reader :tasks
+  attr_reader :task_list
 end
 
 class JuniorDeveloper
@@ -53,14 +53,14 @@ class Team
     q.select!{|dev| dev.name == to} if to
 
     q.first.tap do |dev|
-      dev.add_task(task)
-      @on_tasks[dev.kind].tap{|on| on && on.call(dev, task)}
+      dev.add_task(task_name)
+      @on_tasks[dev.kind].tap{|on| on && on.call(dev, task_name)}
     end
   end
 
   def report
     queue.each do |dev|
-      puts '%s (%s): %s' % [dev.name, dev.kind, dev.tasks.join(', ')]
+      puts '%s (%s): %s' % [dev.name, dev.kind, dev.task_list.join(', ')]
     end
   end
 
@@ -91,10 +91,11 @@ class Team
   end
 
   def queue
-    @members.sort_by{|dev| [dev.tasks.count, @priority.index(dev.group) || 100]}
+    @members.sort_by{|dev| [dev.task_list.count, @priority.index(dev.group) || 100]}
   end
 end
 
+#Create team of developers
 team = Team.new do
 
   have_seniors "Олег", "Оксана"
