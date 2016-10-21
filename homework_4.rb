@@ -50,7 +50,7 @@ class Team
   def add_task(task_name, complexity: nil, to: nil)
     q = queue.dup
     q.select!{|dev| dev.kind == complexity} if complexity
-    q.select!{|dev| dev.name == to} if to
+    q.select!{|dev| dev.dev_name == to} if to
 
     q.first.tap do |dev|
       dev.add_task(task_name)
@@ -60,7 +60,7 @@ class Team
 
   def report
     queue.each do |dev|
-      puts '%s (%s): %s' % [dev.name, dev.kind, dev.task_list.join(', ')]
+      puts '%s (%s): %s' % [dev.dev_name, dev.kind, dev.task_list.join(', ')]
     end
   end
 
@@ -105,10 +105,31 @@ team = Team.new do
   priority :juniors, :developers, :seniors
 
   on_task :junior do |dev, task|
-    puts "Отдали задачу #{task} разработчику #{dev.name}, следите за ним!"
+    puts "Отдали задачу #{task} разработчику #{dev.dev_name}, следите за ним!"
   end
 
   on_task :senior do |dev, task|
-    puts "#{dev.name} сделает #{task}, но просит больше с такими глупостями не приставать"
+    puts "#{dev.dev_name} сделает #{task}, но просит больше с такими глупостями не приставать"
   end
 end
+
+team.add_task 'Прийти в офис!'
+
+team.add_task 'Помыть окна', complexity: :junior
+team.add_task 'Помыть пол', complexity: :junior
+
+team.add_task 'Налить чаю', to: 'Василий'
+
+team.add_task 'Сделать кофе'
+team.add_task 'Прверить как помыли пол', complexity: :senior
+
+team.juniors #=> return array of juniors developers
+team.developers #=> return array of  developers
+team.seniors #=> return array of seniors developers
+
+team.report #=> return
+# Олег (senior): задача1, задача2..
+# Оксана (senior): задача3, задача8..
+# Василий (developer): Налить чаю, задача5..
+..
+team.all  #=> return array of developers with prioryti (seniors, mid, juniors)
