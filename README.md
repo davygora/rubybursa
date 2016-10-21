@@ -1,11 +1,11 @@
 # rubybursa
 ## IT Company Simulator
 #### How to run:
-
+```sh
   $ git@github.com:davygora/rubybursa.git
   $ cd rubybursa
   $ ruby homework_4.rb
-
+```
 **Задача 1.** Класс Developer<br/>
 Создаём класс Developer (разработчик) со следующей ответственностью:<br/>
 - Создаётся с именем разработчика как аргументом: `dev = Developer.new('Вася')`
