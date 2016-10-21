@@ -1,6 +1,10 @@
 # rubybursa
 ## IT Company Simulator
-#### Все домашные задание, которые были выданы преподавателем для этого проекта
+#### How to run:
+
+  $ git@github.com:davygora/rubybursa.git
+  $ cd rubybursa
+  $ ruby homework_4.rb
 
 **Задача 1.** Класс Developer<br/>
 Создаём класс Developer (разработчик) со следующей ответственностью:<br/>
@@ -21,6 +25,7 @@
 ли разработчику что делать
 
 **Задача 2**. Наследники класса Developer
+
 [code](https://github.com/davygora/rubybursa/blob/master/homework_3.rb)
 - Создать двух наследников класса `Developer`: `JuniorDeveloper` и `SeniorDeveloper`
 `JuniorDeveloper` ведёт себя как `Developer`, со следующими отличиями:
@@ -35,6 +40,7 @@
   
   
 **Задача 3.** 
+
 [code](https://github.com/davygora/rubybursa/blob/master/homework_4.rb)
 - Учитывая, что у нас есть классы из предыдущего задания (`Developer`, `JuniorDeveloper` и `SeniorDeveloper`),
 нужно написать класс `Team` (команда разработчиков), который бы работал так:
