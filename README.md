@@ -2,7 +2,7 @@
 ## IT Company Simulator
 #### How to run:
 ```sh
-  $ git@github.com:davygora/rubybursa.git
+  $ git clone git@github.com:davygora/rubybursa.git
   $ cd rubybursa
   $ ruby homework_4.rb
 ```
