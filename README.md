@@ -21,6 +21,7 @@
 ли разработчику что делать
 
 **Задача 2**. Наследники класса Developer
+[code](https://github.com/davygora/rubybursa/blob/master/homework_3.rb)
 - Создать двух наследников класса `Developer`: `JuniorDeveloper` и `SeniorDeveloper`
 `JuniorDeveloper` ведёт себя как `Developer`, со следующими отличиями:
   - у него меньше максимальное количество задач (5);
@@ -34,6 +35,7 @@
   
   
 **Задача 3.** 
+[code](https://github.com/davygora/rubybursa/blob/master/homework_4.rb)
 - Учитывая, что у нас есть классы из предыдущего задания (`Developer`, `JuniorDeveloper` и `SeniorDeveloper`),
 нужно написать класс `Team` (команда разработчиков), который бы работал так:
 ```
